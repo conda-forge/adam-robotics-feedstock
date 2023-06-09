@@ -46,6 +46,7 @@ test:
     - pip
     - pytest
     - icub-models
+    - gym-ignition-models
     - pytorch  # [not win]
     - jax  # [not win]
     - idyntree
