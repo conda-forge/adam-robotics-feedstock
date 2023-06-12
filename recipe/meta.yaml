@@ -1,5 +1,5 @@
 {% set name = "adam-robotics" %}
-{% set version = "0.0.6" %}
+{% set version = "0.0.7" %}
 
 package:
   name: {{ name|lower }}
@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://github.com/ami-iit/ADAM/archive/refs/tags/v{{ version }}.tar.gz
-  sha256: 4a726ac0c0ce6735eb51be30f512583d63721a270d16cb74738f78615540a6cb
+  sha256: a157cfffe2261a35408aa9ef66ad74bb26cbfa2d24fe4613a11cc4f7964f0e87
   # Patch merged upstrea in https://github.com/ami-iit/ADAM/pull/40,
   # will be removed at the next release
   patches:
@@ -52,7 +52,7 @@ test:
 
 about:
   home: https://github.com/ami-iit/ADAM
-  summary: 'ADAM implements a collection of algorithms for calculating rigid-body dynamics in Jax, CasADi, PyTorch, and NumPy.'
+  summary: ADAM implements a collection of algorithms for calculating rigid-body dynamics in Jax, CasADi, PyTorch, and NumPy.
   license: LGPL-2.1-only
   license_file: LICENSE
 
