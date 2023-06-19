@@ -41,7 +41,7 @@ test:
   requires:
     - pip
     - pytest
-    - gym-ignition-models
+    - icub-models
     - pytorch  # [not win]
     - jax  # [not win]
     - idyntree
