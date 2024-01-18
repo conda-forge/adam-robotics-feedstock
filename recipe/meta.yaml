@@ -46,6 +46,7 @@ test:
     - pytorch  # [not win]
     - jax  # [not win]
     - idyntree
+    - git
     - gitpython
 
 about:
