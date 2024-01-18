@@ -46,6 +46,7 @@ test:
     - pytorch  # [not win]
     - jax  # [not win]
     - idyntree
+    - gitpython
 
 about:
   home: https://github.com/ami-iit/ADAM
