@@ -27,6 +27,7 @@ requirements:
     - casadi
     - prettytable
     - urdfdom-py
+    - jax2torch
 
 test:
   source_files:
