@@ -5,7 +5,7 @@ Feedstock license: [BSD-3-Clause](https://github.com/conda-forge/adam-robotics-f
 
 Home: https://github.com/ami-iit/ADAM
 
-Package license: LGPL-2.1-only
+Package license: BSD-3-Clause
 
 Summary: ADAM implements a collection of algorithms for calculating rigid-body dynamics in Jax, CasADi, PyTorch, and NumPy.
 
