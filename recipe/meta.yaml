@@ -42,7 +42,7 @@ test:
   requires:
     - pip
     - pytest
-    - icub-models
+    - icub-models >=2.8.1
     - gym-ignition-models
     - pytorch  # [not win]
     - jax  # [not win]
