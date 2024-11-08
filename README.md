@@ -145,4 +145,5 @@ Feedstock Maintainers
 
 * [@Giulero](https://github.com/Giulero/)
 * [@traversaro](https://github.com/traversaro/)
+* [@xela-95](https://github.com/xela-95/)
 
