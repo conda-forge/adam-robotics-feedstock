@@ -1,5 +1,6 @@
 {% set name = "adam-robotics" %}
 {% set version = "0.3.0" %}
+{% set minimum_python_version = ">=3.7.0" %}
 
 package:
   name: {{ name|lower }}
@@ -10,45 +11,151 @@ source:
   sha256: e5cd1917be601e9c6b5e619ce8326da6dcbf858bb72c430e9f16377e5a48b225
 
 build:
-  noarch: python
-  script: {{ PYTHON }} -m pip install . -vv --no-deps
-  number: 1
+  number: 2
 
 requirements:
   host:
-    - python >=3.7
-    - pip
-    - wheel
-    - setuptools
+    - python {{ minimum_python_version }}
   run:
-    - python >=3.7
-    - numpy
-    - scipy
-    - casadi
-    - prettytable
-    - urdfdom-py
-    - jax2torch
+    - python {{ minimum_python_version }}
 
-test:
-  source_files:
-    - tests
-  imports:
-    - adam
-  commands:
-    # Workaround for glibc <= 2.25 problems,
-    # See https://github.com/ami-iit/ADAM/pull/38#issuecomment-1546909762
-    - pytest ./tests/ -v -k "not gravity"  # [not win]
-    - pytest ./tests/ -v --ignore-glob=*Jax* --ignore-glob=*pytorch*  # [win]
-  requires:
-    - pip
-    - pytest
-    - icub-models
-    - gym-ignition-models
-    - pytorch  # [not win]
-    - jax  # [not win]
-    - idyntree
-    - git
-    - gitpython
+outputs:
+  - name: {{ name|lower }}
+    build:
+      noarch: python
+      script: {{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
+    requirements:
+      build:
+        - python
+      host:
+        - python {{ minimum_python_version }}
+        - pip
+        - wheel
+        - setuptools
+      run:
+        - python {{ minimum_python_version }}
+        - numpy
+        - scipy
+        - prettytable
+        - urdfdom-py
+    test:
+      source_files:
+        - tests
+      commands:
+        - pytest ./tests/ -v -k "not gravity" --ignore-glob=*Jax* --ignore-glob=*pytorch* --ignore-glob=*CasADi*
+      requires:
+        - pip
+        - pytest
+        - icub-models
+        - gym-ignition-models
+        - idyntree
+        - git
+        - gitpython
+
+  - name: {{ name|lower }}-casadi
+    build:
+      noarch: python
+    requirements:
+      host:
+        - python
+      run:
+        - {{ pin_subpackage('adam-robotics', max_pin='x.x.x') }}
+        - casadi
+        - python
+    test:
+      source_files:
+        - tests
+      commands:
+        - pytest ./tests/ -v -k "not gravity" --ignore-glob=*Jax* --ignore-glob=*pytorch*
+      requires:
+        - pip
+        - pytest
+        - icub-models
+        - gym-ignition-models
+        - idyntree
+        - git
+        - gitpython
+        - casadi
+
+  - name: {{ name|lower }}-jax
+    build:
+      skip: True  # [win]
+    requirements:
+      host:
+        - python
+      run:
+        - {{ pin_subpackage('adam-robotics', max_pin='x.x.x') }}
+        - jax
+        - python
+    test:
+      source_files:
+        - tests
+      commands:
+        - pytest ./tests/ -v -k "not gravity" --ignore-glob=*pytorch* --ignore-glob=*CasADi*
+      requires:
+        - pip
+        - pytest
+        - icub-models
+        - gym-ignition-models
+        - idyntree
+        - git
+        - gitpython
+        - jax
+
+  - name: {{ name|lower }}-pytorch
+    build:
+      noarch: python
+    requirements:
+      host:
+        - python
+      run:
+        - {{ pin_subpackage('adam-robotics', max_pin='x.x.x') }}
+        - jax2torch
+        - pytorch
+        - python
+    test:
+      source_files:
+        - tests
+      commands:
+        - pytest ./tests/ -v -k "not gravity" --ignore-glob=*Jax* --ignore-glob=*CasADi*
+      requires:
+        - pip
+        - pytest
+        - icub-models
+        - gym-ignition-models
+        - idyntree
+        - git
+        - gitpython
+        - pytorch
+
+  - name: {{ name|lower }}-all
+    build:
+      skip: True  # [win]
+    requirements:
+      host:
+        - python
+      run:
+        - {{ pin_subpackage('adam-robotics-casadi', max_pin='x.x.x') }}
+        - {{ pin_subpackage('adam-robotics-jax', max_pin='x.x.x') }}
+        - {{ pin_subpackage('adam-robotics-pytorch', max_pin='x.x.x') }}
+        - python
+    test:
+      source_files:
+        - tests
+      commands:
+        - pytest ./tests/ -v -k "not gravity"  # [not win]
+        - pytest ./tests/ -v -k "not gravity" --ignore-glob=*Jax*
+      requires:
+        - pip
+        - pytest
+        - icub-models
+        - gym-ignition-models
+        - idyntree
+        - git
+        - gitpython
+        - casadi
+        - pytorch
+        - jax  # [not win]
 
 about:
   home: https://github.com/ami-iit/ADAM
