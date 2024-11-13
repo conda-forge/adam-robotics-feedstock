@@ -129,14 +129,12 @@ outputs:
         - pytorch
 
   - name: {{ name|lower }}-all
-    build:
-      skip: True  # [win]
     requirements:
       host:
         - python
       run:
         - {{ pin_subpackage('adam-robotics-casadi', max_pin='x.x.x') }}
-        - {{ pin_subpackage('adam-robotics-jax', max_pin='x.x.x') }}
+        - {{ pin_subpackage('adam-robotics-jax', max_pin='x.x.x') }}  # [not win]
         - {{ pin_subpackage('adam-robotics-pytorch', max_pin='x.x.x') }}
         - python
     test:
