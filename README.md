@@ -13,11 +13,72 @@ Current build status
 ====================
 
 
-<table><tr><td>All platforms:</td>
+<table>
+    
+  <tr>
+    <td>Azure</td>
     <td>
-      <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=19488&branchName=main">
-        <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/adam-robotics-feedstock?branchName=main">
-      </a>
+      <details>
+        <summary>
+          <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=19488&branchName=main">
+            <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/adam-robotics-feedstock?branchName=main">
+          </a>
+        </summary>
+        <table>
+          <thead><tr><th>Variant</th><th>Status</th></tr></thead>
+          <tbody><tr>
+              <td>linux_64_numpy1.22</td>
+              <td>
+                <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=19488&branchName=main">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/adam-robotics-feedstock?branchName=main&jobName=linux&configuration=linux%20linux_64_numpy1.22" alt="variant">
+                </a>
+              </td>
+            </tr><tr>
+              <td>linux_64_numpy1.23</td>
+              <td>
+                <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=19488&branchName=main">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/adam-robotics-feedstock?branchName=main&jobName=linux&configuration=linux%20linux_64_numpy1.23" alt="variant">
+                </a>
+              </td>
+            </tr><tr>
+              <td>linux_64_numpy1.26</td>
+              <td>
+                <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=19488&branchName=main">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/adam-robotics-feedstock?branchName=main&jobName=linux&configuration=linux%20linux_64_numpy1.26" alt="variant">
+                </a>
+              </td>
+            </tr><tr>
+              <td>osx_64_python3.10.____cpython</td>
+              <td>
+                <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=19488&branchName=main">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/adam-robotics-feedstock?branchName=main&jobName=osx&configuration=osx%20osx_64_python3.10.____cpython" alt="variant">
+                </a>
+              </td>
+            </tr><tr>
+              <td>osx_64_python3.11.____cpython</td>
+              <td>
+                <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=19488&branchName=main">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/adam-robotics-feedstock?branchName=main&jobName=osx&configuration=osx%20osx_64_python3.11.____cpython" alt="variant">
+                </a>
+              </td>
+            </tr><tr>
+              <td>osx_64_python3.12.____cpython</td>
+              <td>
+                <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=19488&branchName=main">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/adam-robotics-feedstock?branchName=main&jobName=osx&configuration=osx%20osx_64_python3.12.____cpython" alt="variant">
+                </a>
+              </td>
+            </tr><tr>
+              <td>osx_64_python3.9.____cpython</td>
+              <td>
+                <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=19488&branchName=main">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/adam-robotics-feedstock?branchName=main&jobName=osx&configuration=osx%20osx_64_python3.9.____cpython" alt="variant">
+                </a>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </details>
     </td>
   </tr>
 </table>
@@ -28,6 +89,10 @@ Current release info
 | Name | Downloads | Version | Platforms |
 | --- | --- | --- | --- |
 | [![Conda Recipe](https://img.shields.io/badge/recipe-adam--robotics-green.svg)](https://anaconda.org/conda-forge/adam-robotics) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/adam-robotics.svg)](https://anaconda.org/conda-forge/adam-robotics) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/adam-robotics.svg)](https://anaconda.org/conda-forge/adam-robotics) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/adam-robotics.svg)](https://anaconda.org/conda-forge/adam-robotics) |
+| [![Conda Recipe](https://img.shields.io/badge/recipe-adam--robotics--all-green.svg)](https://anaconda.org/conda-forge/adam-robotics-all) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/adam-robotics-all.svg)](https://anaconda.org/conda-forge/adam-robotics-all) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/adam-robotics-all.svg)](https://anaconda.org/conda-forge/adam-robotics-all) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/adam-robotics-all.svg)](https://anaconda.org/conda-forge/adam-robotics-all) |
+| [![Conda Recipe](https://img.shields.io/badge/recipe-adam--robotics--casadi-green.svg)](https://anaconda.org/conda-forge/adam-robotics-casadi) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/adam-robotics-casadi.svg)](https://anaconda.org/conda-forge/adam-robotics-casadi) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/adam-robotics-casadi.svg)](https://anaconda.org/conda-forge/adam-robotics-casadi) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/adam-robotics-casadi.svg)](https://anaconda.org/conda-forge/adam-robotics-casadi) |
+| [![Conda Recipe](https://img.shields.io/badge/recipe-adam--robotics--jax-green.svg)](https://anaconda.org/conda-forge/adam-robotics-jax) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/adam-robotics-jax.svg)](https://anaconda.org/conda-forge/adam-robotics-jax) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/adam-robotics-jax.svg)](https://anaconda.org/conda-forge/adam-robotics-jax) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/adam-robotics-jax.svg)](https://anaconda.org/conda-forge/adam-robotics-jax) |
+| [![Conda Recipe](https://img.shields.io/badge/recipe-adam--robotics--pytorch-green.svg)](https://anaconda.org/conda-forge/adam-robotics-pytorch) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/adam-robotics-pytorch.svg)](https://anaconda.org/conda-forge/adam-robotics-pytorch) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/adam-robotics-pytorch.svg)](https://anaconda.org/conda-forge/adam-robotics-pytorch) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/adam-robotics-pytorch.svg)](https://anaconda.org/conda-forge/adam-robotics-pytorch) |
 
 Installing adam-robotics
 ========================
@@ -39,16 +104,16 @@ conda config --add channels conda-forge
 conda config --set channel_priority strict
 ```
 
-Once the `conda-forge` channel has been enabled, `adam-robotics` can be installed with `conda`:
+Once the `conda-forge` channel has been enabled, `adam-robotics, adam-robotics-all, adam-robotics-casadi, adam-robotics-jax, adam-robotics-pytorch` can be installed with `conda`:
 
 ```
-conda install adam-robotics
+conda install adam-robotics adam-robotics-all adam-robotics-casadi adam-robotics-jax adam-robotics-pytorch
 ```
 
 or with `mamba`:
 
 ```
-mamba install adam-robotics
+mamba install adam-robotics adam-robotics-all adam-robotics-casadi adam-robotics-jax adam-robotics-pytorch
 ```
 
 It is possible to list all of the versions of `adam-robotics` available on your platform with `conda`:
