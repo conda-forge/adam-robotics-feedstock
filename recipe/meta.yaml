@@ -44,7 +44,7 @@ outputs:
       source_files:
         - tests
       commands:
-        - pytest ./tests/ -v -k "not gravity" --ignore-glob=*Jax* --ignore-glob=*pytorch* --ignore-glob=*CasADi*
+        - pytest ./tests/ -v -k "not gravity" --ignore-glob=*Jax* --ignore-glob=*pytorch* --ignore-glob=*CasADi*  --ignore-glob=*idyntree*
       requires:
         - pip
         - pytest
@@ -93,7 +93,7 @@ outputs:
       source_files:
         - tests
       commands:
-        - pytest ./tests/ -v -k "not gravity" --ignore-glob=*pytorch* --ignore-glob=*CasADi*
+        - pytest ./tests/ -v -k "not gravity" --ignore-glob=*pytorch* --ignore-glob=*CasADi* --ignore-glob=*idyntree*
       requires:
         - pip
         - pytest
@@ -119,7 +119,7 @@ outputs:
       source_files:
         - tests
       commands:
-        - pytest ./tests/ -v -k "not gravity" --ignore-glob=*Jax* --ignore-glob=*CasADi*
+        - pytest ./tests/ -v -k "not gravity" --ignore-glob=*Jax* --ignore-glob=*CasADi* --ignore-glob=*idyntree*
       requires:
         - pip
         - pytest
@@ -144,7 +144,7 @@ outputs:
         - tests
       commands:
         - pytest ./tests/ -v -k "not gravity"  # [not win]
-        - pytest ./tests/ -v -k "not gravity" --ignore-glob=*Jax*
+        - pytest ./tests/ -v -k "not gravity" --ignore-glob=*Jax*  # [win]
       requires:
         - pip
         - pytest
