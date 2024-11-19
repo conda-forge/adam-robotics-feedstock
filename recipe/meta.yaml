@@ -45,7 +45,7 @@ outputs:
       commands:
         - pytest ./tests/ -v -k "not gravity" --ignore-glob=*Jax* --ignore-glob=*pytorch* --ignore-glob=*CasADi*  --ignore-glob=*idyntree*
       requires:
-        - python  >={{ python_min }}
+        - python  {{ python_min }}
         - pip
         - pytest
         - icub-models
@@ -70,7 +70,7 @@ outputs:
       commands:
         - pytest ./tests/ -v -k "not gravity" --ignore-glob=*Jax* --ignore-glob=*pytorch*
       requires:
-        - python  >={{ python_min }}
+        - python  {{ python_min }}
         - pip
         - pytest
         - icub-models
@@ -96,7 +96,7 @@ outputs:
       commands:
         - pytest ./tests/ -v -k "not gravity" --ignore-glob=*pytorch* --ignore-glob=*CasADi* --ignore-glob=*idyntree*
       requires:
-        - python  >={{ python_min }}
+        - python  {{ python_min }}
         - pip
         - pytest
         - icub-models
@@ -123,7 +123,7 @@ outputs:
       commands:
         - pytest ./tests/ -v -k "not gravity" --ignore-glob=*Jax* --ignore-glob=*CasADi* --ignore-glob=*idyntree*
       requires:
-        - python  >={{ python_min }}
+        - python  {{ python_min }}
         - pip
         - pytest
         - icub-models
@@ -151,7 +151,7 @@ outputs:
         - pytest ./tests/ -v -k "not gravity"
         - pytest ./tests/ -v -k "not gravity" --ignore-glob=*Jax*
       requires:
-        - python  >={{ python_min }}
+        - python  {{ python_min }}
         - pip
         - pytest
         - icub-models
