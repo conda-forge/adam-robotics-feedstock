@@ -1,6 +1,6 @@
 {% set name = "adam-robotics" %}
 {% set version = "0.3.2" %}
-{% set minimum_python_version = ">=3.7.0" %}
+{% set python_min = "3.10.0" %}
 
 package:
   name: {{ name|lower }}
@@ -13,13 +13,14 @@ source:
     - 01-allow_long_paths.patch
 
 build:
-  number: 1
+  number: 0
+  noarch: python
 
 requirements:
   host:
-    - python {{ minimum_python_version }}
+    - python
   run:
-    - python {{ minimum_python_version }}
+    - python
 
 outputs:
   - name: {{ name|lower }}
@@ -27,15 +28,13 @@ outputs:
       noarch: python
       script: {{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
     requirements:
-      build:
-        - python
       host:
-        - python {{ minimum_python_version }}
+        - python  {{ python_min }}
         - pip
         - wheel
         - setuptools
       run:
-        - python {{ minimum_python_version }}
+        - python  >={{ python_min }}
         - numpy
         - scipy
         - prettytable
@@ -46,6 +45,7 @@ outputs:
       commands:
         - pytest ./tests/ -v -k "not gravity" --ignore-glob=*Jax* --ignore-glob=*pytorch* --ignore-glob=*CasADi*  --ignore-glob=*idyntree*
       requires:
+        - python  >={{ python_min }}
         - pip
         - pytest
         - icub-models
@@ -59,17 +59,18 @@ outputs:
       noarch: python
     requirements:
       host:
-        - python
+        - python  {{ python_min }}
       run:
         - {{ pin_subpackage('adam-robotics', max_pin='x.x.x') }}
         - casadi
-        - python
+        - python  >={{ python_min }}
     test:
       source_files:
         - tests
       commands:
         - pytest ./tests/ -v -k "not gravity" --ignore-glob=*Jax* --ignore-glob=*pytorch*
       requires:
+        - python  >={{ python_min }}
         - pip
         - pytest
         - icub-models
@@ -81,20 +82,21 @@ outputs:
 
   - name: {{ name|lower }}-jax
     build:
-      skip: True  # [win]
+      noarch: python
     requirements:
       host:
-        - python
+        - python  {{ python_min }}
       run:
         - {{ pin_subpackage('adam-robotics', max_pin='x.x.x') }}
         - jax
-        - python
+        - python  >={{ python_min }}
     test:
       source_files:
         - tests
       commands:
         - pytest ./tests/ -v -k "not gravity" --ignore-glob=*pytorch* --ignore-glob=*CasADi* --ignore-glob=*idyntree*
       requires:
+        - python  >={{ python_min }}
         - pip
         - pytest
         - icub-models
@@ -109,18 +111,19 @@ outputs:
       noarch: python
     requirements:
       host:
-        - python
+        - python  {{ python_min }}
       run:
         - {{ pin_subpackage('adam-robotics', max_pin='x.x.x') }}
         - jax2torch
         - pytorch
-        - python
+        - python  >={{ python_min }}
     test:
       source_files:
         - tests
       commands:
         - pytest ./tests/ -v -k "not gravity" --ignore-glob=*Jax* --ignore-glob=*CasADi* --ignore-glob=*idyntree*
       requires:
+        - python  >={{ python_min }}
         - pip
         - pytest
         - icub-models
@@ -131,21 +134,24 @@ outputs:
         - pytorch
 
   - name: {{ name|lower }}-all
+    build:
+      noarch: python
     requirements:
       host:
-        - python
+        - python  {{ python_min }}
       run:
         - {{ pin_subpackage('adam-robotics-casadi', max_pin='x.x.x') }}
-        - {{ pin_subpackage('adam-robotics-jax', max_pin='x.x.x') }}  # [not win]
+        - {{ pin_subpackage('adam-robotics-jax', max_pin='x.x.x') }}
         - {{ pin_subpackage('adam-robotics-pytorch', max_pin='x.x.x') }}
-        - python
+        - python  >={{ python_min }}
     test:
       source_files:
         - tests
       commands:
-        - pytest ./tests/ -v -k "not gravity"  # [not win]
-        - pytest ./tests/ -v -k "not gravity" --ignore-glob=*Jax*  # [win]
+        - pytest ./tests/ -v -k "not gravity"
+        - pytest ./tests/ -v -k "not gravity" --ignore-glob=*Jax*
       requires:
+        - python  >={{ python_min }}
         - pip
         - pytest
         - icub-models
@@ -155,7 +161,7 @@ outputs:
         - gitpython
         - casadi
         - pytorch
-        - jax  # [not win]
+        - jax
 
 about:
   home: https://github.com/ami-iit/ADAM
