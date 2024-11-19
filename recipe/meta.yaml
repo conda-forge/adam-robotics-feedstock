@@ -1,6 +1,6 @@
 {% set name = "adam-robotics" %}
 {% set version = "0.3.2" %}
-{% set python_min = "3.10.0" %}
+{% set python_min = "3.10" %}
 
 package:
   name: {{ name|lower }}
@@ -104,7 +104,7 @@ outputs:
         - idyntree
         - git
         - gitpython
-        - jax
+        - jax >0.3.0
 
   - name: {{ name|lower }}-pytorch
     build:
@@ -132,6 +132,7 @@ outputs:
         - git
         - gitpython
         - pytorch
+        - jax  >0.3.0
 
   - name: {{ name|lower }}-all
     build:
@@ -161,7 +162,7 @@ outputs:
         - gitpython
         - casadi
         - pytorch
-        - jax
+        - jax  >0.3.0
 
 about:
   home: https://github.com/ami-iit/ADAM
