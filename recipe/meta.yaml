@@ -49,7 +49,6 @@ outputs:
         - pip
         - pytest
         - icub-models
-        - gym-ignition-models
         - idyntree
         - git
         - gitpython
@@ -74,7 +73,6 @@ outputs:
         - pip
         - pytest
         - icub-models
-        - gym-ignition-models
         - idyntree
         - git
         - gitpython
@@ -100,7 +98,6 @@ outputs:
         - pip
         - pytest
         - icub-models
-        - gym-ignition-models
         - idyntree
         - git
         - gitpython
@@ -127,7 +124,6 @@ outputs:
         - pip
         - pytest
         - icub-models
-        - gym-ignition-models
         - idyntree
         - git
         - gitpython
@@ -156,7 +152,6 @@ outputs:
         - pip
         - pytest
         - icub-models
-        - gym-ignition-models
         - idyntree
         - git
         - gitpython
