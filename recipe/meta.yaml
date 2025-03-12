@@ -77,6 +77,7 @@ outputs:
         - git
         - gitpython
         - casadi
+        - requests
 
   - name: {{ name|lower }}-jax
     build:
@@ -102,6 +103,7 @@ outputs:
         - git
         - gitpython
         - jax >0.3.0
+        - requests
 
   - name: {{ name|lower }}-pytorch
     build:
@@ -129,6 +131,7 @@ outputs:
         - gitpython
         - pytorch
         - jax  >0.3.0
+        - requests
 
   - name: {{ name|lower }}-all
     build:
@@ -158,6 +161,7 @@ outputs:
         - casadi
         - pytorch
         - jax  >0.3.0
+        - requests
 
 about:
   home: https://github.com/ami-iit/ADAM
