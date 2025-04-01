@@ -120,7 +120,35 @@ outputs:
       source_files:
         - tests
       commands:
-        - pytest ./tests/ -v -k "not gravity" --ignore-glob=*Jax*  --ignore-glob=*jax* --ignore-glob=*CasADi* --ignore-glob=*casadi* --ignore-glob=*idyntree*
+        - pytest ./tests/ -v -k "not gravity" --ignore-glob=*Jax*  --ignore-glob=*jax* --ignore-glob=*CasADi* --ignore-glob=*casadi* --ignore-glob=*idyntree* --ignore-glob=*pytorch_batch*
+      requires:
+        - python  {{ python_min }}
+        - pip
+        - pytest
+        - icub-models
+        - idyntree
+        - git
+        - gitpython
+        - pytorch
+        - jax  >0.3.0
+        - requests
+
+  - name: {{ name|lower }}-pytorch_batch
+    build:
+      noarch: python
+    requirements:
+      host:
+        - python  {{ python_min }}
+      run:
+        - {{ pin_subpackage('adam-robotics', max_pin='x.x.x') }}
+        - jax2torch
+        - pytorch
+        - python  >={{ python_min }}
+    test:
+      source_files:
+        - tests
+      commands:
+        - pytest ./tests/ -v -k "fk or jacobian" --ignore-glob=*Jax*  --ignore-glob=*jax* --ignore-glob=*CasADi* --ignore-glob=*casadi* --ignore-glob=*idyntree* --ignore-glob=*pytorch.py
       requires:
         - python  {{ python_min }}
         - pip
