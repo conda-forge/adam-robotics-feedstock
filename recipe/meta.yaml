@@ -1,6 +1,5 @@
 {% set name = "adam-robotics" %}
-{% set version = "0.3.2" %}
-{% set python_min = "3.10" %}
+{% set version = "0.3.4" %}
 
 package:
   name: {{ name|lower }}
@@ -8,7 +7,7 @@ package:
 
 source:
   url: https://github.com/ami-iit/ADAM/archive/refs/tags/v{{ version }}.tar.gz
-  sha256: 57897d5bc70f2edcdaa0e8b28b9f62f35d3384606d495ef80ae4f68c29b30401
+  sha256: a9ba46ba57e3a205d74c882ab0fc3197bd24f3b8a4c26ef10828ec1692f3ca81
   patches:
     - 01-allow_long_paths.patch
 
@@ -43,7 +42,7 @@ outputs:
       source_files:
         - tests
       commands:
-        - pytest ./tests/ -v -k "not gravity" --ignore-glob=*Jax* --ignore-glob=*pytorch* --ignore-glob=*CasADi*  --ignore-glob=*idyntree*
+        - pytest ./tests/ -v -k "not gravity" --ignore-glob=*Jax* --ignore-glob=*jax* --ignore-glob=*pytorch* --ignore-glob=*CasADi* --ignore-glob=*casadi*  --ignore-glob=*idyntree*
       requires:
         - python  {{ python_min }}
         - pip
@@ -52,6 +51,7 @@ outputs:
         - idyntree
         - git
         - gitpython
+        - requests
 
   - name: {{ name|lower }}-casadi
     build:
@@ -67,7 +67,7 @@ outputs:
       source_files:
         - tests
       commands:
-        - pytest ./tests/ -v -k "not gravity" --ignore-glob=*Jax* --ignore-glob=*pytorch*
+        - pytest ./tests/ -v -k "not gravity" --ignore-glob=*Jax* --ignore-glob=*jax* --ignore-glob=*pytorch*
       requires:
         - python  {{ python_min }}
         - pip
@@ -77,6 +77,7 @@ outputs:
         - git
         - gitpython
         - casadi
+        - requests
 
   - name: {{ name|lower }}-jax
     build:
@@ -92,7 +93,7 @@ outputs:
       source_files:
         - tests
       commands:
-        - pytest ./tests/ -v -k "not gravity" --ignore-glob=*pytorch* --ignore-glob=*CasADi* --ignore-glob=*idyntree*
+        - pytest ./tests/ -v -k "not gravity" --ignore-glob=*pytorch* --ignore-glob=*CasADi* --ignore-glob=*casadi* --ignore-glob=*idyntree*
       requires:
         - python  {{ python_min }}
         - pip
@@ -102,6 +103,7 @@ outputs:
         - git
         - gitpython
         - jax >0.3.0
+        - requests
 
   - name: {{ name|lower }}-pytorch
     build:
@@ -118,7 +120,7 @@ outputs:
       source_files:
         - tests
       commands:
-        - pytest ./tests/ -v -k "not gravity" --ignore-glob=*Jax* --ignore-glob=*CasADi* --ignore-glob=*idyntree*
+        - pytest ./tests/ -v -k "not gravity" --ignore-glob=*Jax*  --ignore-glob=*jax* --ignore-glob=*CasADi* --ignore-glob=*casadi* --ignore-glob=*idyntree* --ignore-glob=*pytorch_batch*
       requires:
         - python  {{ python_min }}
         - pip
@@ -129,6 +131,7 @@ outputs:
         - gitpython
         - pytorch
         - jax  >0.3.0
+        - requests
 
   - name: {{ name|lower }}-all
     build:
@@ -145,8 +148,7 @@ outputs:
       source_files:
         - tests
       commands:
-        - pytest ./tests/ -v -k "not gravity"
-        - pytest ./tests/ -v -k "not gravity" --ignore-glob=*Jax*
+        - pytest ./tests/ -v -k "not gravity" --ignore-glob=*pytorch_batch*
       requires:
         - python  {{ python_min }}
         - pip
@@ -158,6 +160,7 @@ outputs:
         - casadi
         - pytorch
         - jax  >0.3.0
+        - requests
 
 about:
   home: https://github.com/ami-iit/ADAM
