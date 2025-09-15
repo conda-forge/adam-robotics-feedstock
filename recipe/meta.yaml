@@ -1,5 +1,5 @@
 {% set name = "adam-robotics" %}
-{% set version = "0.3.4" %}
+{% set version = "0.3.5" %}
 
 package:
   name: {{ name|lower }}
@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://github.com/ami-iit/ADAM/archive/refs/tags/v{{ version }}.tar.gz
-  sha256: a9ba46ba57e3a205d74c882ab0fc3197bd24f3b8a4c26ef10828ec1692f3ca81
+  sha256: 3cb35a4e9cbe0104058917abb7f9a56411d2fbcd34e574141a59db9a4098ac0d
   patches:
     - 01-allow_long_paths.patch
 
