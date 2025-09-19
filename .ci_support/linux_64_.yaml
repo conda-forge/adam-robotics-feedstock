@@ -9,17 +9,14 @@ docker_image:
 idyntree:
 - '13'
 numpy:
-- '1.26'
+- '2'
 pin_run_as_build:
   python:
     min_pin: x.x
     max_pin: x.x
 python:
-- 3.12.* *_cpython
+- 3.13.* *_cp313
 python_min:
 - '3.10'
 pytorch:
-- '2.5'
-zip_keys:
-- - python
-  - numpy
+- '2.6'
