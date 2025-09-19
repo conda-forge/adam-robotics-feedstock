@@ -8,8 +8,6 @@ package:
 source:
   url: https://github.com/ami-iit/ADAM/archive/refs/tags/v{{ version }}.tar.gz
   sha256: dfd1a546b718b3095fa92fdd40e92baea8c4ad7b94b6f39affac87b2771fcaeb
-  patches:
-    - 01-allow_long_paths.patch
 
 build:
   number: 0
