@@ -60,6 +60,7 @@ outputs:
       run:
         - {{ pin_subpackage('adam-robotics', max_pin='x.x.x') }}
         - casadi
+        - liecasadi
         - python  >={{ python_min }}
     test:
       source_files:
@@ -75,6 +76,7 @@ outputs:
         - git
         - gitpython
         - casadi
+        - liecasadi
         - requests
 
   - name: {{ name|lower }}-jax
