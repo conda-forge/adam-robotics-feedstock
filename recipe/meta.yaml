@@ -36,6 +36,7 @@ outputs:
         - scipy
         - prettytable
         - urdfdom-py
+        - array-api-compat
     test:
       source_files:
         - tests
