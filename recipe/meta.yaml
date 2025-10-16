@@ -47,6 +47,8 @@ outputs:
         - pytest
         - icub-models
         - idyntree
+        # Workaround for https://github.com/conda-forge/adam-robotics-feedstock/pull/19#issuecomment-3409763425
+        - xorg-libxxf86vm
         - git
         - gitpython
         - requests
@@ -73,6 +75,8 @@ outputs:
         - pytest
         - icub-models
         - idyntree
+        # Workaround for https://github.com/conda-forge/adam-robotics-feedstock/pull/19#issuecomment-3409763425
+        - xorg-libxxf86vm
         - git
         - gitpython
         - casadi
@@ -100,6 +104,8 @@ outputs:
         - pytest
         - icub-models
         - idyntree
+        # Workaround for https://github.com/conda-forge/adam-robotics-feedstock/pull/19#issuecomment-3409763425
+        - xorg-libxxf86vm
         - git
         - gitpython
         - jax >0.3.0
@@ -127,6 +133,8 @@ outputs:
         - pytest
         - icub-models
         - idyntree
+        # Workaround for https://github.com/conda-forge/adam-robotics-feedstock/pull/19#issuecomment-3409763425
+        - xorg-libxxf86vm
         - git
         - gitpython
         - pytorch
@@ -155,6 +163,8 @@ outputs:
         - pytest
         - icub-models
         - idyntree
+        # Workaround for https://github.com/conda-forge/adam-robotics-feedstock/pull/19#issuecomment-3409763425
+        - xorg-libxxf86vm
         - git
         - gitpython
         - casadi
