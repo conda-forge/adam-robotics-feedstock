@@ -1,5 +1,5 @@
 {% set name = "adam-robotics" %}
-{% set version = "0.3.5" %}
+{% set version = "0.4.0" %}
 
 package:
   name: {{ name|lower }}
@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://github.com/ami-iit/ADAM/archive/refs/tags/v{{ version }}.tar.gz
-  sha256: dfd1a546b718b3095fa92fdd40e92baea8c4ad7b94b6f39affac87b2771fcaeb
+  sha256: f5df08185216773c0dd848e058922a301a1f83a0d73980112a20b14c5f858903
 
 build:
   number: 0
@@ -36,6 +36,7 @@ outputs:
         - scipy
         - prettytable
         - urdfdom-py
+        - array-api-compat
     test:
       source_files:
         - tests
@@ -47,6 +48,8 @@ outputs:
         - pytest
         - icub-models
         - idyntree
+        # Workaround for https://github.com/conda-forge/adam-robotics-feedstock/pull/19#issuecomment-3409763425
+        - xorg-libxxf86vm
         - git
         - gitpython
         - requests
@@ -73,6 +76,8 @@ outputs:
         - pytest
         - icub-models
         - idyntree
+        # Workaround for https://github.com/conda-forge/adam-robotics-feedstock/pull/19#issuecomment-3409763425
+        - xorg-libxxf86vm
         - git
         - gitpython
         - casadi
@@ -100,6 +105,8 @@ outputs:
         - pytest
         - icub-models
         - idyntree
+        # Workaround for https://github.com/conda-forge/adam-robotics-feedstock/pull/19#issuecomment-3409763425
+        - xorg-libxxf86vm
         - git
         - gitpython
         - jax >0.3.0
@@ -127,6 +134,8 @@ outputs:
         - pytest
         - icub-models
         - idyntree
+        # Workaround for https://github.com/conda-forge/adam-robotics-feedstock/pull/19#issuecomment-3409763425
+        - xorg-libxxf86vm
         - git
         - gitpython
         - pytorch
@@ -155,6 +164,8 @@ outputs:
         - pytest
         - icub-models
         - idyntree
+        # Workaround for https://github.com/conda-forge/adam-robotics-feedstock/pull/19#issuecomment-3409763425
+        - xorg-libxxf86vm
         - git
         - gitpython
         - casadi
