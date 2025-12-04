@@ -1,5 +1,5 @@
 {% set name = "adam-robotics" %}
-{% set version = "0.4.0" %}
+{% set version = "0.5.0" %}
 
 package:
   name: {{ name|lower }}
@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://github.com/ami-iit/ADAM/archive/refs/tags/v{{ version }}.tar.gz
-  sha256: f5df08185216773c0dd848e058922a301a1f83a0d73980112a20b14c5f858903
+  sha256: 44857c830b252415428aeb0fe227a8215785d40da3abdbcd11f612cbb5827e22
 
 build:
   number: 0
