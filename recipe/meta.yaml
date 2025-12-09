@@ -38,7 +38,6 @@ outputs:
         - urdfdom-py
         - array-api-compat
         - mujoco
-        - robot_description
     test:
       source_files:
         - tests
@@ -56,7 +55,7 @@ outputs:
         - gitpython
         - requests
         - mujoco
-        - robot_description
+        - robot_descriptions
 
   - name: {{ name|lower }}-casadi
     build:
@@ -155,7 +154,7 @@ outputs:
       run:
         - {{ pin_subpackage('adam-robotics', max_pin='x.x.x') }}
         - mujoco
-        - robot_description
+        - robot_descriptions
         - python  >={{ python_min }}
     test:
       source_files:
@@ -174,7 +173,7 @@ outputs:
         - gitpython
         - requests
         - mujoco
-        - robot_description
+        - robot_descriptions
 
   - name: {{ name|lower }}-all
     build:
