@@ -38,11 +38,12 @@ outputs:
         - urdfdom-py
         - array-api-compat
         - mujoco
+        - robot_description
     test:
       source_files:
         - tests
       commands:
-        - pytest ./tests/ -v -k "not gravity" --ignore-glob=*Jax* --ignore-glob=*jax* --ignore-glob=*pytorch* --ignore-glob=*CasADi* --ignore-glob=*casadi*  --ignore-glob=*idyntree*
+        - pytest ./tests/ -v -k "not gravity" --ignore-glob=*Jax* --ignore-glob=*jax* --ignore-glob=*pytorch* --ignore-glob=*CasADi* --ignore-glob=*casadi* --ignore-glob=*idyntree* --ignore-glob=*mujoco*
       requires:
         - python  {{ python_min }}
         - pip
@@ -55,6 +56,7 @@ outputs:
         - gitpython
         - requests
         - mujoco
+        - robot_description
 
   - name: {{ name|lower }}-casadi
     build:
@@ -71,7 +73,7 @@ outputs:
       source_files:
         - tests
       commands:
-        - pytest ./tests/ -v -k "not gravity" --ignore-glob=*Jax* --ignore-glob=*jax* --ignore-glob=*pytorch*
+        - pytest ./tests/ -v -k "not gravity" --ignore-glob=*Jax* --ignore-glob=*jax* --ignore-glob=*pytorch* --ignore-glob=*mujoco*
       requires:
         - python  {{ python_min }}
         - pip
@@ -100,7 +102,7 @@ outputs:
       source_files:
         - tests
       commands:
-        - pytest ./tests/ -v -k "not gravity" --ignore-glob=*pytorch* --ignore-glob=*CasADi* --ignore-glob=*casadi* --ignore-glob=*idyntree*
+        - pytest ./tests/ -v -k "not gravity" --ignore-glob=*pytorch* --ignore-glob=*CasADi* --ignore-glob=*casadi* --ignore-glob=*idyntree* --ignore-glob=*mujoco*
       requires:
         - python  {{ python_min }}
         - pip
@@ -129,7 +131,7 @@ outputs:
       source_files:
         - tests
       commands:
-        - pytest ./tests/ -v -k "not gravity" --ignore-glob=*Jax*  --ignore-glob=*jax* --ignore-glob=*CasADi* --ignore-glob=*casadi* --ignore-glob=*idyntree* --ignore-glob=*pytorch_batch*
+        - pytest ./tests/ -v -k "not gravity" --ignore-glob=*Jax*  --ignore-glob=*jax* --ignore-glob=*CasADi* --ignore-glob=*casadi* --ignore-glob=*idyntree* --ignore-glob=*pytorch_batch* --ignore-glob=*mujoco*
       requires:
         - python  {{ python_min }}
         - pip
@@ -143,6 +145,37 @@ outputs:
         - pytorch
         - jax  >0.3.0
         - requests
+
+  - name: {{ name|lower }}-mujoco
+    build:
+      noarch: python
+      script: {{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
+    requirements:
+      host:
+        - python  {{ python_min }}
+      run:
+        - {{ pin_subpackage('adam-robotics', max_pin='x.x.x') }}
+        - mujoco
+        - robot_description
+        - python  >={{ python_min }}
+    test:
+      source_files:
+        - tests
+      commands:
+        - pytest ./tests/test_mujoco.py -v
+      requires:
+        - python  {{ python_min }}
+        - pip
+        - pytest
+        - icub-models
+        - idyntree
+        # Workaround for https://github.com/conda-forge/adam-robotics-feedstock/pull/19#issuecomment-3409763425
+        - xorg-libxxf86vm
+        - git
+        - gitpython
+        - requests
+        - mujoco
+        - robot_description
 
   - name: {{ name|lower }}-all
     build:
@@ -159,7 +192,7 @@ outputs:
       source_files:
         - tests
       commands:
-        - pytest ./tests/ -v -k "not gravity" --ignore-glob=*pytorch_batch*
+        - pytest ./tests/ -v -k "not gravity" --ignore-glob=*pytorch_batch* --ignore-glob=*mujoco*
       requires:
         - python  {{ python_min }}
         - pip
@@ -186,3 +219,4 @@ extra:
     - traversaro
     - Giulero
     - xela-95
+    
