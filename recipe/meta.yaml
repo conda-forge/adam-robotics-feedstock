@@ -37,7 +37,6 @@ outputs:
         - prettytable
         - urdfdom-py
         - array-api-compat
-        - mujoco
     test:
       source_files:
         - tests
@@ -144,34 +143,6 @@ outputs:
         - jax  >0.3.0
         - requests
 
-  - name: {{ name|lower }}-mujoco
-    build:
-      noarch: python
-    requirements:
-      host:
-        - python  {{ python_min }}
-      run:
-        - {{ pin_subpackage('adam-robotics', max_pin='x.x.x') }}
-        - mujoco
-        - robot_descriptions
-        - python  >={{ python_min }}
-    test:
-      source_files:
-        - tests
-      commands:
-        - pytest ./tests/test_mujoco.py -v
-      requires:
-        - python  {{ python_min }}
-        - pip
-        - pytest
-        - icub-models
-        - idyntree
-        - xorg-libxxf86vm
-        - git
-        - gitpython
-        - requests
-        - mujoco
-        - robot_descriptions
   - name: {{ name|lower }}-all
     build:
       noarch: python
@@ -187,7 +158,7 @@ outputs:
       source_files:
         - tests
       commands:
-        - pytest ./tests/ -v -k "not gravity" --ignore-glob=*pytorch_batch* --ignore-glob=*mujoco*
+        - pytest ./tests/ -v -k "not gravity" --ignore-glob=*pytorch_batch* 
       requires:
         - python  {{ python_min }}
         - pip
@@ -202,6 +173,8 @@ outputs:
         - pytorch
         - jax  >0.3.0
         - requests
+        - mujoco
+        - robot_description
 
 about:
   home: https://github.com/ami-iit/ADAM
