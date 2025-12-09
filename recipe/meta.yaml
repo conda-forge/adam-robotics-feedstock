@@ -124,7 +124,6 @@ outputs:
         - python  {{ python_min }}
       run:
         - {{ pin_subpackage('adam-robotics', max_pin='x.x.x') }}
-        - jax2torch
         - pytorch
         - python  >={{ python_min }}
     test:
