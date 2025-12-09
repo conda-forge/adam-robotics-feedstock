@@ -147,7 +147,6 @@ outputs:
   - name: {{ name|lower }}-mujoco
     build:
       noarch: python
-      script: {{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
     requirements:
       host:
         - python  {{ python_min }}
@@ -167,14 +166,12 @@ outputs:
         - pytest
         - icub-models
         - idyntree
-        # Workaround for https://github.com/conda-forge/adam-robotics-feedstock/pull/19#issuecomment-3409763425
         - xorg-libxxf86vm
         - git
         - gitpython
         - requests
         - mujoco
         - robot_descriptions
-
   - name: {{ name|lower }}-all
     build:
       noarch: python
