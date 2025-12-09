@@ -37,6 +37,7 @@ outputs:
         - prettytable
         - urdfdom-py
         - array-api-compat
+        - mujoco
     test:
       source_files:
         - tests
@@ -53,6 +54,7 @@ outputs:
         - git
         - gitpython
         - requests
+        - mujoco
 
   - name: {{ name|lower }}-casadi
     build:
