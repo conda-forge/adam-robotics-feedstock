@@ -53,8 +53,6 @@ outputs:
         - git
         - gitpython
         - requests
-        - mujoco
-        - robot_descriptions
 
   - name: {{ name|lower }}-casadi
     build:
@@ -174,7 +172,7 @@ outputs:
         - jax  >0.3.0
         - requests
         - mujoco
-        - robot_description
+        - robot_descriptions
 
 about:
   home: https://github.com/ami-iit/ADAM
