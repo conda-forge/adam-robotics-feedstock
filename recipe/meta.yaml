@@ -1,5 +1,5 @@
 {% set name = "adam-robotics" %}
-{% set version = "0.4.0" %}
+{% set version = "0.5.0" %}
 
 package:
   name: {{ name|lower }}
@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://github.com/ami-iit/ADAM/archive/refs/tags/v{{ version }}.tar.gz
-  sha256: f5df08185216773c0dd848e058922a301a1f83a0d73980112a20b14c5f858903
+  sha256: 44857c830b252415428aeb0fe227a8215785d40da3abdbcd11f612cbb5827e22
 
 build:
   number: 0
@@ -41,7 +41,7 @@ outputs:
       source_files:
         - tests
       commands:
-        - pytest ./tests/ -v -k "not gravity" --ignore-glob=*Jax* --ignore-glob=*jax* --ignore-glob=*pytorch* --ignore-glob=*CasADi* --ignore-glob=*casadi*  --ignore-glob=*idyntree*
+        - pytest ./tests/ -v -k "not gravity" --ignore-glob=*Jax* --ignore-glob=*jax* --ignore-glob=*pytorch* --ignore-glob=*CasADi* --ignore-glob=*casadi* --ignore-glob=*idyntree* --ignore-glob=*mujoco*
       requires:
         - python  {{ python_min }}
         - pip
@@ -69,7 +69,7 @@ outputs:
       source_files:
         - tests
       commands:
-        - pytest ./tests/ -v -k "not gravity" --ignore-glob=*Jax* --ignore-glob=*jax* --ignore-glob=*pytorch*
+        - pytest ./tests/ -v -k "not gravity" --ignore-glob=*Jax* --ignore-glob=*jax* --ignore-glob=*pytorch* --ignore-glob=*mujoco*
       requires:
         - python  {{ python_min }}
         - pip
@@ -98,7 +98,7 @@ outputs:
       source_files:
         - tests
       commands:
-        - pytest ./tests/ -v -k "not gravity" --ignore-glob=*pytorch* --ignore-glob=*CasADi* --ignore-glob=*casadi* --ignore-glob=*idyntree*
+        - pytest ./tests/ -v -k "not gravity" --ignore-glob=*pytorch* --ignore-glob=*CasADi* --ignore-glob=*casadi* --ignore-glob=*idyntree* --ignore-glob=*mujoco*
       requires:
         - python  {{ python_min }}
         - pip
@@ -120,14 +120,13 @@ outputs:
         - python  {{ python_min }}
       run:
         - {{ pin_subpackage('adam-robotics', max_pin='x.x.x') }}
-        - jax2torch
         - pytorch
         - python  >={{ python_min }}
     test:
       source_files:
         - tests
       commands:
-        - pytest ./tests/ -v -k "not gravity" --ignore-glob=*Jax*  --ignore-glob=*jax* --ignore-glob=*CasADi* --ignore-glob=*casadi* --ignore-glob=*idyntree* --ignore-glob=*pytorch_batch*
+        - pytest ./tests/ -v -k "not gravity" --ignore-glob=*Jax*  --ignore-glob=*jax* --ignore-glob=*CasADi* --ignore-glob=*casadi* --ignore-glob=*idyntree* --ignore-glob=*pytorch_batch* --ignore-glob=*mujoco*
       requires:
         - python  {{ python_min }}
         - pip
@@ -157,7 +156,7 @@ outputs:
       source_files:
         - tests
       commands:
-        - pytest ./tests/ -v -k "not gravity" --ignore-glob=*pytorch_batch*
+        - pytest ./tests/ -v -k "not gravity" --ignore-glob=*pytorch_batch* 
       requires:
         - python  {{ python_min }}
         - pip
@@ -172,6 +171,8 @@ outputs:
         - pytorch
         - jax  >0.3.0
         - requests
+        - mujoco
+        - robot_descriptions
 
 about:
   home: https://github.com/ami-iit/ADAM
@@ -184,3 +185,4 @@ extra:
     - traversaro
     - Giulero
     - xela-95
+    
