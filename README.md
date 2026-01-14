@@ -3,7 +3,7 @@ About adam-robotics-feedstock
 
 Feedstock license: [BSD-3-Clause](https://github.com/conda-forge/adam-robotics-feedstock/blob/main/LICENSE.txt)
 
-Home: https://github.com/ami-iit/ADAM
+Home: https://github.com/gbionics/adam
 
 Package license: BSD-3-Clause
 
