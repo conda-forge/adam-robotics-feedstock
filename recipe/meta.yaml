@@ -6,7 +6,7 @@ package:
   version: {{ version }}
 
 source:
-  url: https://github.com/ami-iit/ADAM/archive/refs/tags/v{{ version }}.tar.gz
+  url: https://github.com/gbionics/adam/archive/refs/tags/v{{ version }}.tar.gz
   sha256: 075e76dff473fa454dd0051d084b77ecb6760361b37a6c298818cbfe503f8241
 
 build:
@@ -175,7 +175,7 @@ outputs:
         - robot_descriptions
 
 about:
-  home: https://github.com/ami-iit/ADAM
+  home: https://github.com/gbionics/adam
   summary: ADAM implements a collection of algorithms for calculating rigid-body dynamics in Jax, CasADi, PyTorch, and NumPy.
   license: BSD-3-Clause
   license_file: LICENSE
