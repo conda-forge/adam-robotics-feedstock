@@ -1,5 +1,5 @@
 {% set name = "adam-robotics" %}
-{% set version = "0.5.1" %}
+{% set version = "0.5.2" %}
 
 package:
   name: {{ name|lower }}
@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://github.com/gbionics/adam/archive/refs/tags/v{{ version }}.tar.gz
-  sha256: 075e76dff473fa454dd0051d084b77ecb6760361b37a6c298818cbfe503f8241
+  sha256: 67c1d0a96b60ef13cc652381debd6b491f3d184627efc4b2e1da175869ce1ae5
 
 build:
   number: 0
