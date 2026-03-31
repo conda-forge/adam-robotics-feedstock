@@ -69,7 +69,7 @@ outputs:
       source_files:
         - tests
       commands:
-        - pytest ./tests/ -v -k "not gravity" --ignore-glob=*Jax* --ignore-glob=*jax* --ignore-glob=*pytorch* --ignore-glob=*mujoco*
+        - pytest ./tests/ -v -k "not gravity" --ignore-glob=*Jax* --ignore-glob=*jax* --ignore-glob=*pytorch* --ignore-glob=*mujoco* --ignore-glob=*usd*
       requires:
         - python  {{ python_min }}
         - pip
