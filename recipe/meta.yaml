@@ -156,7 +156,7 @@ outputs:
       source_files:
         - tests
       commands:
-        - pytest ./tests/ -v -k "not gravity" --ignore-glob=*pytorch_batch* --ignore-glob=*usd*
+        - pytest ./tests/ -v -k "not gravity" --ignore-glob=*pytorch_batch*
       requires:
         - python  {{ python_min }}
         - pip
@@ -173,6 +173,7 @@ outputs:
         - requests
         - mujoco
         - robot_descriptions
+        - urdf-usd-converter
 
 about:
   home: https://github.com/gbionics/adam
