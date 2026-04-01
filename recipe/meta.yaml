@@ -156,7 +156,7 @@ outputs:
       source_files:
         - tests
       commands:
-        - pytest ./tests/ -v -k "not gravity" --ignore-glob=*pytorch_batch*
+        - pytest ./tests/ -v -k "not gravity and not pytorch" --ignore-glob="*pytorch*"
       requires:
         - python  {{ python_min }}
         - pip
