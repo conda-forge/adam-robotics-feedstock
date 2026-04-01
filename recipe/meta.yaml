@@ -126,7 +126,7 @@ outputs:
       source_files:
         - tests
       commands:
-        - pytest ./tests/ -v -k "not gravity" --ignore-glob=*Jax*  --ignore-glob=*jax* --ignore-glob=*CasADi* --ignore-glob=*casadi* --ignore-glob=*idyntree* --ignore-glob=*pytorch_batch* --ignore-glob=*mujoco* --ignore-glob=*inverse_kinematics* --ignore-glob=*usd*
+        - pytest ./tests/ -v -k "not gravity" --ignore-glob=*Jax*  --ignore-glob=*jax* --ignore-glob=*CasADi* --ignore-glob=*casadi* --ignore-glob=*idyntree* --ignore-glob=*mujoco* --ignore-glob=*inverse_kinematics* --ignore-glob=*usd*
       requires:
         - python  {{ python_min }}
         - pip
@@ -156,7 +156,7 @@ outputs:
       source_files:
         - tests
       commands:
-        - pytest ./tests/ -v -k "not gravity" --ignore-glob=*pytorch_batch*
+        - pytest ./tests/ -v -k "not gravity" --ignore-glob=*pytorch_batch* --ignore-glob=*usd*
       requires:
         - python  {{ python_min }}
         - pip
