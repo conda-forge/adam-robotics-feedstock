@@ -1,5 +1,5 @@
 {% set name = "adam-robotics" %}
-{% set version = "0.5.3" %}
+{% set version = "0.6.0" %}
 
 package:
   name: {{ name|lower }}
@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://github.com/gbionics/adam/archive/refs/tags/v{{ version }}.tar.gz
-  sha256: c57eb3357fdab3c81408adccf22d089cc0c16b09dfecbf4f452eb5c62ad5e202
+  sha256: 0d70617090c83376c3f14ae3e27aca11111785fe010b500a7ccb0e0ef55971c6
 
 build:
   number: 0
@@ -156,7 +156,7 @@ outputs:
       source_files:
         - tests
       commands:
-        - pytest ./tests/ -v -k "not gravity and not pytorch" --ignore-glob="*pytorch*" --ignore-glob=*usd* 
+        - pytest ./tests/ -v -k "not gravity and not pytorch" --ignore-glob="*pytorch*" --ignore-glob=*usd*
       requires:
         - python  {{ python_min }}
         - pip
