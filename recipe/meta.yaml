@@ -83,6 +83,7 @@ outputs:
         - casadi
         - liecasadi
         - requests
+        - mujoco
 
   - name: {{ name|lower }}-jax
     build:
