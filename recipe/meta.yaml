@@ -112,6 +112,7 @@ outputs:
         - gitpython
         - jax >0.3.0
         - requests
+        - mujoco
 
   - name: {{ name|lower }}-pytorch
     build:
@@ -141,6 +142,7 @@ outputs:
         - pytorch
         - jax  >0.3.0
         - requests
+        - mujoco
 
   - name: {{ name|lower }}-all
     build:
