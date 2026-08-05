@@ -41,7 +41,7 @@ outputs:
       source_files:
         - tests
       commands:
-        - pytest ./tests/ -v -k "not gravity" --ignore-glob=*Jax* --ignore-glob=*jax* --ignore-glob=*pytorch* --ignore-glob=*CasADi* --ignore-glob=*casadi* --ignore-glob=*idyntree* --ignore-glob=*mujoco* --ignore-glob=*inverse_kinematics*
+        - pytest ./tests/ -v -k "not gravity" --ignore-glob=*Jax* --ignore-glob=*jax* --ignore-glob=*pytorch* --ignore-glob=*CasADi* --ignore-glob=*casadi* --ignore-glob=*idyntree* --ignore-glob=** --ignore-glob=*inverse_kinematics*
       requires:
         - python  {{ python_min }}
         - pip
@@ -69,7 +69,7 @@ outputs:
       source_files:
         - tests
       commands:
-        - pytest ./tests/ -v -k "not gravity" --ignore-glob=*Jax* --ignore-glob=*jax* --ignore-glob=*pytorch* --ignore-glob=*mujoco* --ignore-glob=*usd*
+        - pytest ./tests/ -v -k "not gravity" --ignore-glob=*Jax* --ignore-glob=*jax* --ignore-glob=*pytorch* --ignore-glob=** --ignore-glob=*usd*
       requires:
         - python  {{ python_min }}
         - pip
@@ -83,7 +83,7 @@ outputs:
         - casadi
         - liecasadi
         - requests
-        - mujoco
+        - >=3.11
 
   - name: {{ name|lower }}-jax
     build:
@@ -99,7 +99,7 @@ outputs:
       source_files:
         - tests
       commands:
-        - pytest ./tests/ -v -k "not gravity" --ignore-glob=*pytorch* --ignore-glob=*CasADi* --ignore-glob=*casadi* --ignore-glob=*idyntree* --ignore-glob=*mujoco* --ignore-glob=*inverse_kinematics* --ignore-glob=*usd*
+        - pytest ./tests/ -v -k "not gravity" --ignore-glob=*pytorch* --ignore-glob=*CasADi* --ignore-glob=*casadi* --ignore-glob=*idyntree* --ignore-glob=** --ignore-glob=*inverse_kinematics* --ignore-glob=*usd*
       requires:
         - python  {{ python_min }}
         - pip
@@ -112,7 +112,7 @@ outputs:
         - gitpython
         - jax >0.3.0
         - requests
-        - mujoco
+        - >=3.11
 
   - name: {{ name|lower }}-pytorch
     build:
@@ -128,7 +128,7 @@ outputs:
       source_files:
         - tests
       commands:
-        - pytest ./tests/ -v -k "not gravity" --ignore-glob=*Jax*  --ignore-glob=*jax* --ignore-glob=*CasADi* --ignore-glob=*casadi* --ignore-glob=*idyntree* --ignore-glob=*mujoco* --ignore-glob=*inverse_kinematics* --ignore-glob=*usd*
+        - pytest ./tests/ -v -k "not gravity" --ignore-glob=*Jax*  --ignore-glob=*jax* --ignore-glob=*CasADi* --ignore-glob=*casadi* --ignore-glob=*idyntree* --ignore-glob=** --ignore-glob=*inverse_kinematics* --ignore-glob=*usd*
       requires:
         - python  {{ python_min }}
         - pip
@@ -142,7 +142,7 @@ outputs:
         - pytorch
         - jax  >0.3.0
         - requests
-        - mujoco
+        - >=3.11
 
   - name: {{ name|lower }}-all
     build:
@@ -174,7 +174,7 @@ outputs:
         - pytorch
         - jax  >0.3.0
         - requests
-        - mujoco
+        - >=3.11
         - robot_descriptions
         - urdf-usd-converter
 
