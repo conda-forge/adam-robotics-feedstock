@@ -83,7 +83,7 @@ outputs:
         - casadi
         - liecasadi
         - requests
-        - >=3.11
+        - mujoco>=3.11
 
   - name: {{ name|lower }}-jax
     build:
@@ -112,7 +112,7 @@ outputs:
         - gitpython
         - jax >0.3.0
         - requests
-        - >=3.11
+        - mujoco>=3.11
 
   - name: {{ name|lower }}-pytorch
     build:
@@ -142,7 +142,7 @@ outputs:
         - pytorch
         - jax  >0.3.0
         - requests
-        - >=3.11
+        - mujoco>=3.11
 
   - name: {{ name|lower }}-all
     build:
@@ -174,7 +174,7 @@ outputs:
         - pytorch
         - jax  >0.3.0
         - requests
-        - >=3.11
+        - mujoco>=3.11
         - robot_descriptions
         - urdf-usd-converter
 
