@@ -210,6 +210,7 @@ outputs:
         - gitpython
         - requests
         - urdf-usd-converter
+        - casadi
 
   - name: {{ name|lower }}-visualization
     build:
