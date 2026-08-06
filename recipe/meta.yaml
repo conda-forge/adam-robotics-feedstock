@@ -26,12 +26,12 @@ outputs:
       script: {{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
     requirements:
       host:
-        - python  {{ python_min }}
+        - python {{ python_min }}
         - pip
         - wheel
         - setuptools
       run:
-        - python  >={{ python_min }}
+        - python >={{ python_min }}
         - numpy
         - scipy
         - prettytable
@@ -41,10 +41,12 @@ outputs:
       source_files:
         - tests
       commands:
-        - pytest ./tests/ -v -k "not gravity" --ignore-glob=*Jax* --ignore-glob=*jax* --ignore-glob=*pytorch* --ignore-glob=*CasADi* --ignore-glob=*casadi* --ignore-glob=*idyntree* --ignore-glob=*mujoco* --ignore-glob=*inverse_kinematics*
+        - >-
+          pytest -v
+          tests/test_numpy.py
+          tests/parametric/test_numpy_parametric.py
       requires:
-        - python  {{ python_min }}
-        - pip
+        - python {{ python_min }}
         - pytest
         - icub-models
         - idyntree
@@ -59,20 +61,25 @@ outputs:
       noarch: python
     requirements:
       host:
-        - python  {{ python_min }}
+        - python {{ python_min }}
       run:
         - {{ pin_subpackage('adam-robotics', max_pin='x.x.x') }}
         - casadi
         - liecasadi
-        - python  >={{ python_min }}
+        - python >={{ python_min }}
     test:
       source_files:
         - tests
       commands:
-        - pytest ./tests/ -v -k "not gravity" --ignore-glob=*Jax* --ignore-glob=*jax* --ignore-glob=*pytorch* --ignore-glob=*mujoco* --ignore-glob=*usd*
+        - >-
+          pytest -v
+          tests/test_casadi.py
+          tests/test_inverse_kinematics.py
+          tests/test_idyntree_conversion.py
+          tests/parametric/test_casadi_parametric.py
+          tests/parametric/test_idyntree_conversion_parametric.py
       requires:
-        - python  {{ python_min }}
-        - pip
+        - python {{ python_min }}
         - pytest
         - icub-models
         - idyntree
@@ -80,29 +87,29 @@ outputs:
         - xorg-libxxf86vm
         - git
         - gitpython
-        - casadi
-        - liecasadi
         - requests
-        - mujoco>=3.11
 
   - name: {{ name|lower }}-jax
     build:
       noarch: python
     requirements:
       host:
-        - python  {{ python_min }}
+        - python {{ python_min }}
       run:
         - {{ pin_subpackage('adam-robotics', max_pin='x.x.x') }}
         - jax
-        - python  >={{ python_min }}
+        - python >={{ python_min }}
     test:
       source_files:
         - tests
       commands:
-        - pytest ./tests/ -v -k "not gravity" --ignore-glob=*pytorch* --ignore-glob=*CasADi* --ignore-glob=*casadi* --ignore-glob=*idyntree* --ignore-glob=*mujoco* --ignore-glob=*inverse_kinematics* --ignore-glob=*usd*
+        - >-
+          pytest -v
+          tests/test_jax.py
+          tests/test_jax_batch.py
+          tests/parametric/test_jax_parametric.py
       requires:
-        - python  {{ python_min }}
-        - pip
+        - python {{ python_min }}
         - pytest
         - icub-models
         - idyntree
@@ -110,28 +117,29 @@ outputs:
         - xorg-libxxf86vm
         - git
         - gitpython
-        - jax >0.3.0
         - requests
-        - mujoco>=3.11
 
   - name: {{ name|lower }}-pytorch
     build:
       noarch: python
     requirements:
       host:
-        - python  {{ python_min }}
+        - python {{ python_min }}
       run:
         - {{ pin_subpackage('adam-robotics', max_pin='x.x.x') }}
         - pytorch
-        - python  >={{ python_min }}
+        - python >={{ python_min }}
     test:
       source_files:
         - tests
       commands:
-        - pytest ./tests/ -v -k "not gravity" --ignore-glob=*Jax*  --ignore-glob=*jax* --ignore-glob=*CasADi* --ignore-glob=*casadi* --ignore-glob=*idyntree* --ignore-glob=*mujoco* --ignore-glob=*inverse_kinematics* --ignore-glob=*usd*
+        - >-
+          pytest -v
+          tests/test_pytorch.py
+          tests/test_pytorch_batch.py
+          tests/parametric/test_pytorch_parametric.py
       requires:
-        - python  {{ python_min }}
-        - pip
+        - python {{ python_min }}
         - pytest
         - icub-models
         - idyntree
@@ -139,44 +147,120 @@ outputs:
         - xorg-libxxf86vm
         - git
         - gitpython
-        - pytorch
-        - jax  >0.3.0
         - requests
-        - mujoco>=3.11
+
+  - name: {{ name|lower }}-mujoco
+    build:
+      noarch: python
+    requirements:
+      host:
+        - python {{ python_min }}
+      run:
+        - {{ pin_subpackage('adam-robotics', max_pin='x.x.x') }}
+        - mujoco
+        - python >={{ python_min }}
+    test:
+      source_files:
+        - tests
+      commands:
+        - >-
+          pytest -v
+          tests/test_mujoco.py
+          tests/test_mujoco_sites.py
+      requires:
+        - python {{ python_min }}
+        - pytest
+        - icub-models
+        - idyntree
+        # Workaround for https://github.com/conda-forge/adam-robotics-feedstock/pull/19#issuecomment-3409763425
+        - xorg-libxxf86vm
+        - git
+        - gitpython
+        - requests
+        - robot_descriptions
+
+  - name: {{ name|lower }}-usd
+    build:
+      noarch: python
+    requirements:
+      host:
+        - python {{ python_min }}
+      run:
+        - {{ pin_subpackage('adam-robotics', max_pin='x.x.x') }}
+        - openusd
+        - trimesh
+        - python >={{ python_min }}
+    test:
+      source_files:
+        - tests
+      commands:
+        - >-
+          pytest -v
+          tests/test_usd.py
+          tests/test_usd_conversion.py
+          tests/test_usd_frames.py
+      requires:
+        - python {{ python_min }}
+        - pytest
+        - icub-models
+        - idyntree
+        # Workaround for https://github.com/conda-forge/adam-robotics-feedstock/pull/19#issuecomment-3409763425
+        - xorg-libxxf86vm
+        - git
+        - gitpython
+        - requests
+        - urdf-usd-converter
+
+  - name: {{ name|lower }}-visualization
+    build:
+      noarch: python
+    requirements:
+      host:
+        - python {{ python_min }}
+      run:
+        - {{ pin_subpackage('adam-robotics', max_pin='x.x.x') }}
+        - viser
+        - trimesh
+        - python >={{ python_min }}
+    test:
+      source_files:
+        - tests
+      commands:
+        - pytest -v tests/test_visualization.py
+      requires:
+        - python {{ python_min }}
+        - pytest
+        - icub-models
+        - idyntree
+        # Workaround for https://github.com/conda-forge/adam-robotics-feedstock/pull/19#issuecomment-3409763425
+        - xorg-libxxf86vm
+        - git
+        - gitpython
+        - requests
+        # test_visualization.py imports MuJoCo unconditionally.
+        - mujoco
+        # Enables the USD visualization tests instead of skipping them.
+        - openusd
 
   - name: {{ name|lower }}-all
     build:
       noarch: python
     requirements:
       host:
-        - python  {{ python_min }}
+        - python {{ python_min }}
       run:
         - {{ pin_subpackage('adam-robotics-casadi', max_pin='x.x.x') }}
         - {{ pin_subpackage('adam-robotics-jax', max_pin='x.x.x') }}
         - {{ pin_subpackage('adam-robotics-pytorch', max_pin='x.x.x') }}
-        - python  >={{ python_min }}
+        - {{ pin_subpackage('adam-robotics-visualization', max_pin='x.x.x') }}
+        - python >={{ python_min }}
     test:
-      source_files:
-        - tests
       commands:
-        - pytest ./tests/ -v -k "not gravity and not pytorch" --ignore-glob="*pytorch*" --ignore-glob=*usd*
+        - python -c "import adam.casadi; import adam.jax; import adam.pytorch"
+        - python -c "from adam.casadi.inverse_kinematics import InverseKinematics"
+        - python -c "from adam.visualization import Visualizer; import viser; import trimesh"
       requires:
-        - python  {{ python_min }}
-        - pip
-        - pytest
-        - icub-models
-        - idyntree
-        # Workaround for https://github.com/conda-forge/adam-robotics-feedstock/pull/19#issuecomment-3409763425
-        - xorg-libxxf86vm
-        - git
-        - gitpython
-        - casadi
-        - pytorch
-        - jax  >0.3.0
-        - requests
-        - mujoco>=3.11
-        - robot_descriptions
-        - urdf-usd-converter
+        - python {{ python_min }}
 
 about:
   home: https://github.com/gbionics/adam
