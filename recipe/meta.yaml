@@ -1,5 +1,5 @@
 {% set name = "adam-robotics" %}
-{% set version = "0.6.1" %}
+{% set version = "0.6.2" %}
 
 package:
   name: {{ name|lower }}
@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://github.com/gbionics/adam/archive/refs/tags/v{{ version }}.tar.gz
-  sha256: f0b111e7f5671f4d445bf447ca005607c7f923dd221ae5cfa4b6b75ca181b031
+  sha256: bea522fd5f35fbfe7ddc81a8989d8c66b1e0f01067b6a34d934f9e386108cd8e
 
 build:
   number: 0
@@ -42,9 +42,7 @@ outputs:
         - tests
       commands:
         - >-
-          pytest -v
-          tests/test_numpy.py
-          tests/parametric/test_numpy_parametric.py
+          pytest -v tests/test_numpy.py tests/parametric/test_numpy_parametric.py
       requires:
         - python {{ python_min }}
         - pytest
@@ -72,12 +70,7 @@ outputs:
         - tests
       commands:
         - >-
-          pytest -v
-          tests/test_casadi.py
-          tests/test_inverse_kinematics.py
-          tests/test_idyntree_conversion.py
-          tests/parametric/test_casadi_parametric.py
-          tests/parametric/test_idyntree_conversion_parametric.py
+          pytest -v tests/test_casadi.py tests/test_inverse_kinematics.py tests/test_idyntree_conversion.py tests/parametric/test_casadi_parametric.py tests/parametric/test_idyntree_conversion_parametric.py
       requires:
         - python {{ python_min }}
         - pytest
@@ -104,10 +97,7 @@ outputs:
         - tests
       commands:
         - >-
-          pytest -v
-          tests/test_jax.py
-          tests/test_jax_batch.py
-          tests/parametric/test_jax_parametric.py
+          pytest -v tests/test_jax.py tests/test_jax_batch.py tests/parametric/test_jax_parametric.py
       requires:
         - python {{ python_min }}
         - pytest
@@ -134,10 +124,7 @@ outputs:
         - tests
       commands:
         - >-
-          pytest -v
-          tests/test_pytorch.py
-          tests/test_pytorch_batch.py
-          tests/parametric/test_pytorch_parametric.py
+          pytest -v tests/test_pytorch.py tests/test_pytorch_batch.py tests/parametric/test_pytorch_parametric.py
       requires:
         - python {{ python_min }}
         - pytest
@@ -164,9 +151,7 @@ outputs:
         - tests
       commands:
         - >-
-          pytest -v
-          tests/test_mujoco.py
-          tests/test_mujoco_sites.py
+          pytest -v tests/test_mujoco.py tests/test_mujoco_sites.py
       requires:
         - python {{ python_min }}
         - pytest
@@ -195,10 +180,7 @@ outputs:
         - tests
       commands:
         - >-
-          pytest -v
-          tests/test_usd.py
-          tests/test_usd_conversion.py
-          tests/test_usd_frames.py
+          pytest -v tests/test_usd.py tests/test_usd_conversion.py tests/test_usd_frames.py
       requires:
         - python {{ python_min }}
         - pytest
