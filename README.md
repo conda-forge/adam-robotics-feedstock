@@ -32,7 +32,10 @@ Current release info
 | [![Conda Recipe](https://img.shields.io/badge/recipe-adam--robotics--all-green.svg)](https://anaconda.org/conda-forge/adam-robotics-all) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/adam-robotics-all.svg)](https://anaconda.org/conda-forge/adam-robotics-all) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/adam-robotics-all.svg)](https://anaconda.org/conda-forge/adam-robotics-all) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/adam-robotics-all.svg)](https://anaconda.org/conda-forge/adam-robotics-all) |
 | [![Conda Recipe](https://img.shields.io/badge/recipe-adam--robotics--casadi-green.svg)](https://anaconda.org/conda-forge/adam-robotics-casadi) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/adam-robotics-casadi.svg)](https://anaconda.org/conda-forge/adam-robotics-casadi) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/adam-robotics-casadi.svg)](https://anaconda.org/conda-forge/adam-robotics-casadi) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/adam-robotics-casadi.svg)](https://anaconda.org/conda-forge/adam-robotics-casadi) |
 | [![Conda Recipe](https://img.shields.io/badge/recipe-adam--robotics--jax-green.svg)](https://anaconda.org/conda-forge/adam-robotics-jax) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/adam-robotics-jax.svg)](https://anaconda.org/conda-forge/adam-robotics-jax) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/adam-robotics-jax.svg)](https://anaconda.org/conda-forge/adam-robotics-jax) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/adam-robotics-jax.svg)](https://anaconda.org/conda-forge/adam-robotics-jax) |
+| [![Conda Recipe](https://img.shields.io/badge/recipe-adam--robotics--mujoco-green.svg)](https://anaconda.org/conda-forge/adam-robotics-mujoco) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/adam-robotics-mujoco.svg)](https://anaconda.org/conda-forge/adam-robotics-mujoco) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/adam-robotics-mujoco.svg)](https://anaconda.org/conda-forge/adam-robotics-mujoco) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/adam-robotics-mujoco.svg)](https://anaconda.org/conda-forge/adam-robotics-mujoco) |
 | [![Conda Recipe](https://img.shields.io/badge/recipe-adam--robotics--pytorch-green.svg)](https://anaconda.org/conda-forge/adam-robotics-pytorch) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/adam-robotics-pytorch.svg)](https://anaconda.org/conda-forge/adam-robotics-pytorch) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/adam-robotics-pytorch.svg)](https://anaconda.org/conda-forge/adam-robotics-pytorch) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/adam-robotics-pytorch.svg)](https://anaconda.org/conda-forge/adam-robotics-pytorch) |
+| [![Conda Recipe](https://img.shields.io/badge/recipe-adam--robotics--usd-green.svg)](https://anaconda.org/conda-forge/adam-robotics-usd) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/adam-robotics-usd.svg)](https://anaconda.org/conda-forge/adam-robotics-usd) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/adam-robotics-usd.svg)](https://anaconda.org/conda-forge/adam-robotics-usd) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/adam-robotics-usd.svg)](https://anaconda.org/conda-forge/adam-robotics-usd) |
+| [![Conda Recipe](https://img.shields.io/badge/recipe-adam--robotics--visualization-green.svg)](https://anaconda.org/conda-forge/adam-robotics-visualization) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/adam-robotics-visualization.svg)](https://anaconda.org/conda-forge/adam-robotics-visualization) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/adam-robotics-visualization.svg)](https://anaconda.org/conda-forge/adam-robotics-visualization) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/adam-robotics-visualization.svg)](https://anaconda.org/conda-forge/adam-robotics-visualization) |
 
 Installing adam-robotics
 ========================
@@ -44,31 +47,73 @@ conda config --add channels conda-forge
 conda config --set channel_priority strict
 ```
 
-Once the `conda-forge` channel has been enabled, `adam-robotics, adam-robotics-all, adam-robotics-casadi, adam-robotics-jax, adam-robotics-pytorch` can be installed with `conda`:
+How to use
+----------
+
+<details>
+<summary>With conda</summary>
 
 ```
-conda install adam-robotics adam-robotics-all adam-robotics-casadi adam-robotics-jax adam-robotics-pytorch
+conda install adam-robotics adam-robotics-all adam-robotics-casadi adam-robotics-jax adam-robotics-mujoco adam-robotics-pytorch adam-robotics-usd adam-robotics-visualization
 ```
 
-or with `mamba`:
+</details>
+
+<details>
+<summary>With mamba</summary>
 
 ```
-mamba install adam-robotics adam-robotics-all adam-robotics-casadi adam-robotics-jax adam-robotics-pytorch
+mamba install adam-robotics adam-robotics-all adam-robotics-casadi adam-robotics-jax adam-robotics-mujoco adam-robotics-pytorch adam-robotics-usd adam-robotics-visualization
 ```
 
-It is possible to list all of the versions of `adam-robotics` available on your platform with `conda`:
+</details>
+
+<details>
+<summary>With pixi</summary>
+
+```
+# for adding to your local project
+pixi add adam-robotics adam-robotics-all adam-robotics-casadi adam-robotics-jax adam-robotics-mujoco adam-robotics-pytorch adam-robotics-usd adam-robotics-visualization
+# for installing globally
+pixi global install adam-robotics adam-robotics-all adam-robotics-casadi adam-robotics-jax adam-robotics-mujoco adam-robotics-pytorch adam-robotics-usd adam-robotics-visualization
+```
+
+</details>
+
+Search package versions
+-----------------------
+
+It is possible to list all of the versions of `adam-robotics` available on your platform:
+
+<details>
+<summary>With conda</summary>
 
 ```
 conda search adam-robotics --channel conda-forge
 ```
 
-or with `mamba`:
+</details>
+
+<details>
+<summary>With mamba</summary>
 
 ```
 mamba search adam-robotics --channel conda-forge
 ```
 
-Alternatively, `mamba repoquery` may provide more information:
+</details>
+
+<details>
+<summary>With pixi</summary>
+
+```
+pixi search adam-robotics --channel conda-forge
+```
+
+</details>
+
+<details>
+<summary>With mamba repoquery, which may provide more information</summary>
 
 ```
 # Search all versions available on your platform:
@@ -80,6 +125,8 @@ mamba repoquery whoneeds adam-robotics --channel conda-forge
 # List dependencies of `adam-robotics`:
 mamba repoquery depends adam-robotics --channel conda-forge
 ```
+
+</details>
 
 
 About conda-forge
